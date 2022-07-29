@@ -21,27 +21,27 @@ const Home = () => {
 	}, [load])
 
 	return (
-		<div className="text-center">
+		<div className="container">
 			<h1>To do list</h1>
-			<input value={nuevaTarea} onChange={e => setNuevaTarea(e.target.value)} type="text" placeholder="Tareas nueva?" />
+			<input value={nuevaTarea} onChange={e => setNuevaTarea(e.target.value)} type="text" placeholder="Tareas por hacer" />
 			<button onClick={() => AdicionarTarea()}>Adicionar</button>
 			<button onClick={() => BorrarTodo()}>Borrar Todo</button>
-			<ul>
+			<ul className="ulclass">
 				{tareas?.map((objeto, indice) =>
-					<li key={indice}>
+					<li className="liclass" key={indice}>
 						{objeto.label}
-						<i onClick={() => BorrarTarea(indice)} className="fa-solid fa-trash-can"></i>
+						<span className="spanclass"><i onClick={() => BorrarTarea(indice)} className="fa-solid fa-xmark"></i></span>
 					</li>)}
 			</ul>
-			{tareas.length} cantidad de tareas
+			<span className="spanfinal"> Tareas restantes: {tareas.length}</span>
 		</div>
 	);
 
 	// FUNCION UTILIZADA POR BOTON PARA INCOPORAR TAREA A ARRAY TAREAS
 	function AdicionarTarea() {
-		let auxiliar = [...tareas, { label: nuevaTarea, done: false }]
-		setTareas(auxiliar);
-		setNuevaTarea("");
+		let auxiliar = [...tareas, { label: nuevaTarea, done: false }] // auxiliar incorpora nueva tarea a array tareas
+		setTareas(auxiliar); //actualiza array tareas con nueva tarea incorporado
+		setNuevaTarea(""); //Deja el input blanco
 		console.log(tareas)
 
 		//* DESDE POSTMAN
