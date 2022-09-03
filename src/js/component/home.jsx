@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 
+// PARA USAR: POST EMPTY ARRAY [] (BODY/RAW/JSON) DESDE POSTMAN A RUTA https://assets.breatheco.de/apis/fake/todos/user/todolistapi 
+
 const Home = () => {
 
 	const [tareas, setTareas] = useState([]);
